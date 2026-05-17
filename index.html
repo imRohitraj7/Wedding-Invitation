@@ -338,13 +338,16 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   html{-webkit-text-size-adjust:100%}
   .panel{padding:56px 16px 72px;min-height:100svh}
 
-  /* Per-photo face positioning — keeps subjects visible on portrait crop */
-  #hero    .panel-bg{background-position:right center !important}   /* photo4: right-biased crop, not full right edge */
-  #invite  .panel-bg{background-position:center 28% !important}  /* park, faces upper third */
-  #countdown .panel-bg{background-position:30% 32% !important}   /* standing couple left of frame */
-  #events  .panel-bg{background-position:left center !important}  /* photo3: keep left-side subjects visible */
-  #venue   .panel-bg{background-position:54% 22% !important}     /* monument couple */
-  #savedate .panel-bg{background-position:left center !important} /* photo6: keep left-side subjects visible */
+  /* FIX: photo4 - moved from right side to center */
+  #hero .panel-bg {
+    background-position: 72% center !important; /* Changed from 'right center' to 72% to bring subject to center */
+  }
+  
+  #invite  .panel-bg{background-position:center 28% !important}
+  #countdown .panel-bg{background-position:30% 32% !important}
+  #events  .panel-bg{background-position:left center !important}
+  #venue   .panel-bg{background-position:54% 22% !important}
+  #savedate .panel-bg{background-position:left center !important}
 
   /* ── Hero ── */
   .hero-corner{width:48px;height:48px;border-width:1.5px 0 0 1.5px}
