@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>Wedding Invitation – Rohit weds Vijeta</title>
+<title>Wedding Invitation – Rohit & Vijeta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -204,6 +204,9 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
 .event-card{flex:1;min-width:200px;max-width:280px;padding:28px 20px;background:rgba(14,6,12,.72);border:1px solid rgba(201,168,76,.22);border-radius:3px;transition:border-color .35s,transform .35s;text-align:center}
 .event-card:hover{border-color:rgba(201,168,76,.7);transform:translateY(-6px)}
 .ev-icon{font-size:28px;display:block;margin-bottom:10px}
+.ev-illustration{display:block;width:104px;height:92px;margin:0 auto 10px;overflow:hidden}
+.ev-illustration svg{display:block;width:100%;height:100%;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
+.wedding-card{position:relative}
 .ev-name{font-family:'Cinzel',serif;font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:block}
 .ev-time{font-family:'Cormorant Garamond',serif;font-size:26px;font-style:italic;color:var(--cream);display:block;margin-bottom:2px}
 .ev-date-tag{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;color:var(--gold);opacity:.7;display:block;margin-bottom:4px}
@@ -267,6 +270,24 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
 .toast{position:fixed;top:26px;left:50%;transform:translateX(-50%) translateY(-12px);background:linear-gradient(135deg,var(--gl),var(--gold));color:#1a0810;padding:13px 32px;border-radius:2px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .35s,transform .35s;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,.5)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+/* ── COUNTDOWN CELEBRATION POPUP ── */
+#celebrationFX{position:fixed;inset:0;z-index:590;pointer-events:none;overflow:hidden}
+.celebration-modal{position:fixed;inset:0;z-index:650;display:flex;align-items:center;justify-content:center;padding:22px;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.celebration-modal.open{opacity:1;pointer-events:auto}
+.celebration-backdrop{position:absolute;inset:0;background:radial-gradient(circle at 50% 20%,rgba(201,168,76,.18),transparent 36%),rgba(4,1,5,.72);backdrop-filter:blur(6px)}
+.celebration-card{position:relative;width:min(520px,100%);padding:44px 34px 36px;background:rgba(14,6,12,.92);border:1px solid rgba(232,207,136,.48);box-shadow:0 24px 80px rgba(0,0,0,.72),0 0 46px rgba(201,168,76,.22);text-align:center;border-radius:5px;overflow:hidden}
+.celebration-card::before{content:'';position:absolute;inset:9px;border:1px solid rgba(232,207,136,.16);pointer-events:none}
+.celebration-kicker{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.celebration-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,8vw,64px);font-style:italic;font-weight:300;line-height:1;background:linear-gradient(140deg,#fff,var(--gl),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:18px}
+.celebration-copy{font-size:18px;line-height:1.9;color:rgba(253,246,236,.82);font-style:italic;max-width:410px;margin:0 auto 26px}
+.celebration-close{position:relative;z-index:2;display:inline-block;min-height:44px;padding:13px 30px;background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));border:0;border-radius:2px;color:#1a0810;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 30px rgba(201,168,76,.34)}
+.celebration-x{position:absolute;top:14px;right:14px;z-index:3;width:40px;height:40px;border:1px solid rgba(201,168,76,.34);border-radius:50%;background:rgba(0,0,0,.24);color:var(--gold);font-size:23px;line-height:1;cursor:pointer}
+.rocket{position:absolute;bottom:-42px;left:var(--x);width:4px;height:32px;border-radius:5px;background:linear-gradient(to top,#fff,var(--gl),#d4547a);box-shadow:0 0 16px var(--c);animation:rocketRise .9s ease-out forwards}
+.rocket::after{content:'';position:absolute;left:50%;top:26px;width:2px;height:40px;transform:translateX(-50%);background:linear-gradient(to bottom,var(--c),transparent)}
+.fw-dot{position:absolute;left:var(--x);top:var(--y);width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 16px var(--c);animation:fireworkPop 1.25s ease-out forwards}
+@keyframes rocketRise{to{transform:translateY(var(--travel)) scale(.72);opacity:.9}}
+@keyframes fireworkPop{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.1);opacity:0}}
+
 /* ═══════════════════════════════
    RESPONSIVE — TABLET (≤768px)
 ═══════════════════════════════ */
@@ -318,12 +339,12 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   .panel{padding:56px 16px 72px;min-height:100svh}
 
   /* Per-photo face positioning — keeps subjects visible on portrait crop */
-  #hero    .panel-bg{background-position:center 18% !important}  /* couple on steps */
+  #hero    .panel-bg{background-position:43% 18% !important}     /* boat couple */
   #invite  .panel-bg{background-position:center 28% !important}  /* park, faces upper third */
-  #countdown .panel-bg{background-position:center 30% !important}/* bench couple */
-  #events  .panel-bg{background-position:center 35% !important}  /* boat sitting */
-  #venue   .panel-bg{background-position:center 22% !important}  /* monument, sky heavy */
-  #savedate .panel-bg{background-position:center 30% !important} /* boat standing */
+  #countdown .panel-bg{background-position:30% 32% !important}   /* standing couple left of frame */
+  #events  .panel-bg{background-position:54% 35% !important}     /* bench couple */
+  #venue   .panel-bg{background-position:54% 22% !important}     /* monument couple */
+  #savedate .panel-bg{background-position:18% 50% !important}    /* keep left-side couple visible */
 
   /* ── Hero ── */
   .hero-corner{width:48px;height:48px;border-width:1.5px 0 0 1.5px}
@@ -373,6 +394,7 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   .events-row{flex-direction:column;align-items:center;gap:12px;margin-top:22px}
   .event-card{width:92%;max-width:320px;flex:none;padding:20px 18px}
   .ev-icon{font-size:24px;margin-bottom:7px}
+  .ev-illustration{width:92px;height:80px;margin-bottom:8px}
   .ev-name{font-size:7.5px;letter-spacing:3px}
   .ev-time{font-size:22px}
   .ev-date-tag{font-size:7.5px;letter-spacing:1.5px}
@@ -420,6 +442,10 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   footer{padding:28px 16px}
   .footer-names{font-size:24px}
   .footer-note{font-size:7px;letter-spacing:1.8px}
+  .celebration-modal{padding:14px}
+  .celebration-card{padding:38px 22px 30px}
+  .celebration-copy{font-size:16px;line-height:1.75}
+  .celebration-title{font-size:clamp(36px,12vw,52px)}
 }
 
 /* ── Extra-small phones (≤360px) ── */
@@ -442,7 +468,22 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
 <audio id="bgMusic" src="music.mp3" autoplay loop muted></audio>
 <canvas id="petalCanvas"></canvas>
 <div id="confLayer"></div>
+<div id="celebrationFX"></div>
 <div class="toast" id="toast">✦ Saved! We look forward to celebrating with you ✦</div>
+
+<div class="celebration-modal" id="celebrationModal" role="dialog" aria-modal="true" aria-labelledby="celebrationTitle">
+  <div class="celebration-backdrop"></div>
+  <div class="celebration-card">
+    <button class="celebration-x" id="celebrationX" aria-label="Close celebration">×</button>
+    <p class="celebration-kicker">The Countdown Is Complete</p>
+    <h2 class="celebration-title" id="celebrationTitle">Congratulations, We Got Married!</h2>
+    <p class="celebration-copy">
+      With hearts full of joy, we thank you for being part of our beautiful beginning.
+      Your blessings, love, and presence made this celebration unforgettable.
+    </p>
+    <button class="celebration-close" id="celebrationClose">Continue Website</button>
+  </div>
+</div>
 
 <!-- Improved Music Toggle -->
 <button class="music-btn" id="musicBtn" title="Toggle Music">
@@ -567,7 +608,7 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
         <span class="ev-time">6:00 PM</span>
         <p class="ev-desc">An evening of music, dance, and the beautiful art of henna.</p>
       </div>
-      <div class="event-card">
+      <div class="event-card wedding-card">
         <span class="ev-icon">💍</span>
         <span class="ev-name">Wedding &amp; Reception</span>
         <span class="ev-date-tag">26 June 2026</span>
@@ -696,9 +737,70 @@ panels.forEach(p=>io.observe(p));
    COUNTDOWN
 ═══════════════════════════════════ */
 const wedding=new Date("2026-06-26T20:00:00+05:30");
+let marriageCelebrationShown=false;
+let celebrationTimer=null;
+const celebrationModal=document.getElementById("celebrationModal");
+const celebrationFX=document.getElementById("celebrationFX");
+const celebrationColors=["#c9a84c","#e8cf88","#d4547a","#fff0c8","#ff7a3d","#fff","#f7c8ff"];
+function setCountdownZero(){
+  ["cd-days","cd-hours","cd-mins","cd-secs"].forEach(id=>document.getElementById(id).textContent="00");
+}
+function explodeFirework(x,y){
+  for(let i=0;i<34;i++){
+    const dot=document.createElement("span");
+    dot.className="fw-dot";
+    const angle=(Math.PI*2*i)/34;
+    const dist=50+Math.random()*90;
+    dot.style.setProperty("--x",x+"vw");
+    dot.style.setProperty("--y",y+"vh");
+    dot.style.setProperty("--dx",Math.cos(angle)*dist+"px");
+    dot.style.setProperty("--dy",Math.sin(angle)*dist+"px");
+    dot.style.setProperty("--c",celebrationColors[Math.floor(Math.random()*celebrationColors.length)]);
+    celebrationFX.appendChild(dot);
+    setTimeout(()=>dot.remove(),1350);
+  }
+}
+function launchRocket(){
+  const x=12+Math.random()*76;
+  const y=16+Math.random()*34;
+  const rocket=document.createElement("span");
+  rocket.className="rocket";
+  rocket.style.setProperty("--x",x+"vw");
+  rocket.style.setProperty("--travel",-(64-y)+"vh");
+  rocket.style.setProperty("--c",celebrationColors[Math.floor(Math.random()*celebrationColors.length)]);
+  celebrationFX.appendChild(rocket);
+  setTimeout(()=>{rocket.remove();explodeFirework(x,y);},880);
+}
+function startWeddingFireworks(){
+  if(celebrationTimer) clearInterval(celebrationTimer);
+  for(let i=0;i<4;i++) setTimeout(launchRocket,i*180);
+  celebrationTimer=setInterval(launchRocket,420);
+  setTimeout(()=>clearInterval(celebrationTimer),9000);
+}
+function showMarriageCelebration(){
+  if(marriageCelebrationShown) return;
+  marriageCelebrationShown=true;
+  celebrationModal.classList.add("open");
+  document.body.style.overflow="hidden";
+  startWeddingFireworks();
+}
+function closeMarriageCelebration(){
+  celebrationModal.classList.remove("open");
+  document.body.style.overflow="";
+  if(celebrationTimer) clearInterval(celebrationTimer);
+  setTimeout(()=>celebrationFX.innerHTML="",1400);
+}
+document.getElementById("celebrationClose").addEventListener("click",closeMarriageCelebration);
+document.getElementById("celebrationX").addEventListener("click",closeMarriageCelebration);
+celebrationModal.addEventListener("click",e=>{if(e.target.classList.contains("celebration-backdrop"))closeMarriageCelebration();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&celebrationModal.classList.contains("open"))closeMarriageCelebration();});
 function tick(){
   const diff=wedding-Date.now();
-  if(diff<=0) return;
+  if(diff<=0){
+    setCountdownZero();
+    showMarriageCelebration();
+    return;
+  }
   const d=Math.floor(diff/86400000),
         h=Math.floor((diff%86400000)/3600000),
         m=Math.floor((diff%3600000)/60000),
