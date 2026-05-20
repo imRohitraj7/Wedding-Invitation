@@ -77,7 +77,6 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
   position:fixed;bottom:28px;left:28px;z-index:300;
   display:flex;align-items:center;gap:0;
   cursor:pointer;user-select:none;
-  /* pill shape */
   background:transparent;
   border:1px solid rgba(201,168,76,.38);
   border-radius:40px;
@@ -90,7 +89,6 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
   border-color:rgba(201,168,76,.85);
   box-shadow:0 0 12px rgba(201,168,76,.18);
 }
-/* Icon circle */
 .music-icon{
   width:44px;height:44px;
   display:flex;align-items:center;justify-content:center;
@@ -100,7 +98,6 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
 }
 .music-btn:not(.muted) .music-icon{background:transparent}
 .music-btn.muted .music-icon{background:transparent}
-/* Label */
 .music-label{
   font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;
   text-transform:uppercase;color:var(--gold);
@@ -109,7 +106,6 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
   transition:color .3s;
 }
 .music-btn.muted .music-label{color:rgba(201,168,76,.45)}
-/* Sound-wave bars */
 .music-bars{
   display:flex;align-items:center;gap:2px;
   margin-right:12px;
@@ -117,11 +113,10 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
 .music-bars span{
   display:block;width:3px;border-radius:2px;
   background:var(--gold);
-  transform:scaleY(.25);     /* flat by default — music not yet playing */
+  transform:scaleY(.25);
   opacity:.35;
   transition:transform .3s ease, opacity .3s ease;
 }
-/* Active state — added via JS when music plays */
 .music-btn.playing .music-bars span{
   animation:bar-dance var(--spd,0.7s) ease-in-out infinite alternate;
   opacity:1;
@@ -133,7 +128,6 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
 .music-bars span:nth-child(4){height:16px;--spd:.8s;animation-delay:.05s}
 .music-bars span:nth-child(5){height:7px;--spd:.55s;animation-delay:.15s}
 @keyframes bar-dance{from{transform:scaleY(.3);opacity:.6}to{transform:scaleY(1);opacity:1}}
-/* Muted — flat + dim, no animation */
 .music-btn.muted .music-bars span{animation:none !important;transform:scaleY(.25) !important;opacity:.2 !important}
 
 /* ── INVITE ── */
@@ -160,7 +154,7 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
 .cd-sep{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);opacity:.3;padding-bottom:24px;line-height:1}
 .cd-sep-sm{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);opacity:.22;padding-bottom:12px;line-height:1}
 
-/* ── PHOTO RIBBON — infinite auto-scroll ── */
+/* ── PHOTO RIBBON ── */
 .ribbon-wrap{position:relative;z-index:5;background:#0e060c;overflow:hidden}
 .ribbon-hint{
   display:flex;justify-content:center;align-items:center;gap:8px;
@@ -171,7 +165,7 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
 }
 .ribbon{
   display:flex;gap:6px;padding:8px 6px 10px;
-  overflow:hidden;          /* hide scrollbar — JS drives it */
+  overflow:hidden;
   height:210px;
   cursor:pointer;
 }
@@ -191,7 +185,6 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
   padding:8px 4px;opacity:0;transition:opacity .3s;
 }
 .ribbon-img:hover .ribbon-label{opacity:1}
-/* fade edges for seamless feel */
 .ribbon-wrap::before,.ribbon-wrap::after{
   content:'';position:absolute;top:0;bottom:0;width:60px;z-index:6;pointer-events:none;
 }
@@ -201,7 +194,7 @@ body{font-family:'EB Garamond',Georgia,serif;background:#07030a;color:var(--crea
 /* ── EVENTS ── */
 #events .panel-ov{background:linear-gradient(to bottom,rgba(14,6,12,.32),rgba(14,6,12,.48),rgba(14,6,12,.85))}
 .events-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:40px;width:100%}
-.event-card{flex:1;min-width:200px;max-width:280px;padding:28px 20px;background:rgba(14,6,12,.72);border:1px solid rgba(201,168,76,.22);border-radius:3px;transition:border-color .35s,transform .35s;text-align:center}
+.event-card{flex:1;min-width:200px;max-width:260px;padding:28px 20px;background:rgba(14,6,12,.72);border:1px solid rgba(201,168,76,.22);border-radius:3px;transition:border-color .35s,transform .35s;text-align:center}
 .event-card:hover{border-color:rgba(201,168,76,.7);transform:translateY(-6px)}
 .ev-icon{font-size:28px;display:block;margin-bottom:10px}
 .ev-illustration{display:block;width:104px;height:92px;margin:0 auto 10px;overflow:hidden}
@@ -291,9 +284,6 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
 /* ═══════════════════════════════
    RESPONSIVE — TABLET (≤768px)
 ═══════════════════════════════ */
-/* ═══════════════════════════════════
-   TABLET  (≤768px)
-═══════════════════════════════════ */
 @media(max-width:768px){
   .panel{padding:60px 18px}
   .hero-corner{width:90px;height:90px}
@@ -302,28 +292,21 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   .glass-card{padding:32px 22px}
   .invite-body{font-size:16px;line-height:1.95}
   .families{gap:28px}
-
-  /* Countdown — tighten boxes slightly */
   .cd-row{gap:6px}
   .cd-box{min-width:80px;padding:12px 10px 10px}
   .cd-num{font-size:clamp(38px,7vw,60px)}
   .cd-sep{font-size:36px;padding-bottom:18px}
   .cd-sep-sm{font-size:20px;padding-bottom:8px}
   .cd-row-sec .cd-num{font-size:clamp(24px,5vw,36px)}
-
   .ribbon{height:180px;padding:8px 6px 10px}
   .ribbon-img{flex:0 0 200px;height:158px}
   .events-row{gap:12px}
-  .event-card{min-width:160px;max-width:100%;flex:1 1 44%}
+  .event-card{min-width:150px;max-width:100%;flex:1 1 30%}
   .venue-address{font-size:15px}
   .rsvp-note{font-size:16px}
   .save-btn{padding:15px 38px;font-size:10px}
-
-  /* Lightbox arrows — bigger tap target on tablet */
   .lb-arrow{width:52px;height:52px;font-size:30px}
   .lb-prev{left:8px}.lb-next{right:8px}
-
-  /* Music pill — slightly compact */
   .music-btn{bottom:20px;left:20px}
   .music-icon{width:40px;height:40px;font-size:16px}
   .music-label{font-size:9px;padding:0 12px 0 6px}
@@ -333,20 +316,14 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
    MOBILE  (≤480px)
 ═══════════════════════════════════ */
 @media(max-width:480px){
-
-  /* ── Base ── */
   html{-webkit-text-size-adjust:100%}
   .panel{padding:56px 16px 72px;min-height:100svh}
-
-  /* Per-photo face positioning — keeps subjects visible on portrait crop */
-  #hero    .panel-bg{background-position:44% 22% !important}     /* photo4: same mobile logic as photo5 */
-  #invite  .panel-bg{background-position:left 28% !important}     /* photo1: keep left-side subjects visible */
-  #countdown .panel-bg{background-position:30% 32% !important}   /* standing couple left of frame */
-  #events  .panel-bg{background-position:65% center !important}  /* photo3: keep left-side subjects visible */
-  #venue   .panel-bg{background-position:54% 22% !important}     /* monument couple */
-  #savedate .panel-bg{background-position:left center !important} /* photo6: keep left-side subjects visible */
-
-  /* ── Hero ── */
+  #hero    .panel-bg{background-position:44% 22% !important}
+  #invite  .panel-bg{background-position:left 28% !important}
+  #countdown .panel-bg{background-position:30% 32% !important}
+  #events  .panel-bg{background-position:65% center !important}
+  #venue   .panel-bg{background-position:54% 22% !important}
+  #savedate .panel-bg{background-position:left center !important}
   .hero-corner{width:48px;height:48px;border-width:1.5px 0 0 1.5px}
   .hero-corner.br{border-width:0 1.5px 1.5px 0}
   .hero-name{font-size:clamp(36px,10vw,54px);line-height:1;letter-spacing:-.5px}
@@ -355,42 +332,27 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   .scroll-hint{bottom:14px;font-size:7.5px;letter-spacing:3px}
   .scroll-line{height:30px}
   .divider{margin:12px auto;max-width:240px}
-
-  /* ── Invite card ── */
   .glass-card{padding:24px 16px;border-radius:4px}
   .glass-card::before{inset:5px}
   .invite-body{font-size:15px;line-height:1.88}
   .families{gap:20px;margin-top:18px}
   .fam-tag{font-size:7.5px;letter-spacing:2.5px}
   .fam-name{font-size:18px}
-
-  /* ── Countdown — reduced crowding ── */
   .cd-wrap{gap:8px;margin-top:24px}
   .cd-row{gap:4px}
-  /* Each box narrower, let font shrink with vw */
-  .cd-box{
-    min-width:0;
-    width:calc(28vw - 8px); /* 3 boxes + 2 separators fill width */
-    padding:10px 6px 8px;
-    border-radius:4px;
-  }
+  .cd-box{min-width:0;width:calc(28vw - 8px);padding:10px 6px 8px;border-radius:4px}
   .cd-num{font-size:clamp(28px,8vw,44px);letter-spacing:-1px}
   .cd-lbl{font-size:6.5px;letter-spacing:2px;margin-top:4px}
   .cd-sep{font-size:22px;padding-bottom:12px}
-  /* Seconds row — smaller, breathing room */
   .cd-row-sec{gap:6px}
   .cd-row-sec .cd-box{width:auto;min-width:0;padding:8px 20px 6px}
   .cd-row-sec .cd-num{font-size:clamp(20px,5vw,28px);letter-spacing:0}
   .cd-sep-sm{font-size:16px;padding-bottom:6px}
-
-  /* ── Ribbon ── */
   .ribbon-wrap .ribbon-hint{font-size:6.5px;letter-spacing:2px;padding:6px 0 1px}
   .ribbon{height:130px;padding:5px 6px 7px;gap:5px}
   .ribbon-img{flex:0 0 140px;height:112px;border-radius:4px}
   .ribbon-label{font-size:7px;padding:5px 2px}
   .ribbon-wrap::before,.ribbon-wrap::after{width:24px}
-
-  /* ── Events ── */
   .events-row{flex-direction:column;align-items:center;gap:12px;margin-top:22px}
   .event-card{width:92%;max-width:320px;flex:none;padding:20px 18px}
   .ev-icon{font-size:24px;margin-bottom:7px}
@@ -399,32 +361,17 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   .ev-time{font-size:22px}
   .ev-date-tag{font-size:7.5px;letter-spacing:1.5px}
   .ev-desc{font-size:13px;line-height:1.65;margin-top:4px}
-
-  /* ── Venue ── */
   .venue-name{font-size:clamp(20px,6.5vw,30px);margin-top:12px}
   .venue-address{font-size:14px;line-height:1.95}
   .map-btn{font-size:8.5px;letter-spacing:2px;padding:11px 24px;margin-top:18px}
-
-  /* ── Save the date ── */
   .rsvp-note{font-size:14.5px;margin:12px auto 26px;line-height:1.9;padding:0 6px}
   .save-btn{padding:15px 0;font-size:9.5px;letter-spacing:2.5px;width:86%;display:block;margin:0 auto;text-align:center}
-
-  /* ── Lightbox — large tap targets ── */
   .lb img{max-width:96vw;max-height:76vh}
-  .lb-arrow{
-    width:48px;height:48px;font-size:26px;
-    background:rgba(14,6,12,.88);
-    /* push arrows inward so they don't get clipped */
-  }
+  .lb-arrow{width:48px;height:48px;font-size:26px;background:rgba(14,6,12,.88)}
   .lb-prev{left:4px}.lb-next{right:4px}
   .lb-close{top:12px;right:12px;width:40px;height:40px;font-size:22px}
   .lb-counter{font-size:8px;bottom:10px;padding:4px 12px}
-
-  /* ── Music button — smaller pill on mobile ── */
-  .music-btn{
-    bottom:14px;left:14px;
-    border-radius:30px;
-  }
+  .music-btn{bottom:14px;left:14px;border-radius:30px}
   .music-icon{width:34px;height:34px;font-size:14px}
   .music-label{font-size:7.5px;letter-spacing:1.5px;padding:0 10px 0 5px}
   .music-bars{gap:1.5px;margin-right:8px}
@@ -434,11 +381,7 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   .music-bars span:nth-child(3){height:8px}
   .music-bars span:nth-child(4){height:12px}
   .music-bars span:nth-child(5){height:6px}
-
-  /* ── Gold separator ── */
   .sep{height:1.5px}
-
-  /* ── Footer ── */
   footer{padding:28px 16px}
   .footer-names{font-size:24px}
   .footer-note{font-size:7px;letter-spacing:1.8px}
@@ -456,9 +399,9 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   .cd-num{font-size:26px}
   .cd-lbl{font-size:6px;letter-spacing:1.5px}
   .ribbon-img{flex:0 0 120px;height:100px}
-  .music-label{display:none}     /* hide label text on tiny screens */
-  .music-btn{border-radius:50%}  /* pure circle on tiny screens */
-  .music-bars{display:none}      /* only icon visible */
+  .music-label{display:none}
+  .music-btn{border-radius:50%}
+  .music-bars{display:none}
   .music-icon{width:38px;height:38px}
 }
 </style>
@@ -552,7 +495,6 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
     <h2 class="heading">Counting Down</h2>
     <div class="divider"><span>✦</span></div>
     <div class="cd-wrap">
-      <!-- Row 1: Days · Hours · Minutes -->
       <div class="cd-row">
         <div class="cd-box"><span class="cd-num" id="cd-days">00</span><span class="cd-lbl">Days</span></div>
         <span class="cd-sep">:</span>
@@ -560,7 +502,6 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
         <span class="cd-sep">:</span>
         <div class="cd-box"><span class="cd-num" id="cd-mins">00</span><span class="cd-lbl">Minutes</span></div>
       </div>
-      <!-- Row 2: Seconds (smaller, subtle) -->
       <div class="cd-row-sec">
         <span class="cd-sep-sm">:</span>
         <div class="cd-box"><span class="cd-num" id="cd-secs">00</span><span class="cd-lbl">Seconds</span></div>
@@ -570,11 +511,10 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
   </div>
 </section>
 
-<!-- ══ PHOTO RIBBON — infinite auto-scroll ══ -->
+<!-- ══ PHOTO RIBBON ══ -->
 <div class="ribbon-wrap">
   <p class="ribbon-hint"><span>‹</span> Auto scrolling &nbsp;·&nbsp; Click any photo to view full <span>›</span></p>
   <div class="ribbon" id="ribbon">
-    <!-- Original set -->
     <div class="ribbon-img" data-idx="0" style="background-image:url('photo4.jpg');"><span class="ribbon-label">Click to view</span></div>
     <div class="ribbon-img" data-idx="1" style="background-image:url('photo1.jpg');"><span class="ribbon-label">Click to view</span></div>
     <div class="ribbon-img" data-idx="2" style="background-image:url('photo2.jpg');"><span class="ribbon-label">Click to view</span></div>
@@ -601,13 +541,26 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
     <h2 class="heading">Wedding Ceremonies</h2>
     <div class="divider"><span>✦</span></div>
     <div class="events-row">
+
+      <!-- Haldi — 24 June -->
+      <div class="event-card">
+        <span class="ev-icon">🌼</span>
+        <span class="ev-name">Haldi</span>
+        <span class="ev-date-tag">24 June 2026</span>
+        <span class="ev-time">11:00 AM</span>
+        <p class="ev-desc">A golden ritual of turmeric blessings, laughter, and love shared with family.</p>
+      </div>
+
+      <!-- Mehendi & Sangeet — 25 June -->
       <div class="event-card">
         <span class="ev-icon">🌸</span>
         <span class="ev-name">Mehendi &amp; Sangeet</span>
-        <span class="ev-date-tag">24 June 2026</span>
+        <span class="ev-date-tag">25 June 2026</span>
         <span class="ev-time">6:00 PM</span>
         <p class="ev-desc">An evening of music, dance, and the beautiful art of henna.</p>
       </div>
+
+      <!-- Wedding & Reception — 26 June -->
       <div class="event-card wedding-card">
         <span class="ev-icon">💍</span>
         <span class="ev-name">Wedding &amp; Reception</span>
@@ -615,6 +568,7 @@ footer{background:#07030a;padding:42px 20px;text-align:center;border-top:1px sol
         <span class="ev-time">8:00 PM</span>
         <p class="ev-desc">The sacred union of two souls, followed by a grand celebration.</p>
       </div>
+
     </div>
   </div>
 </section>
@@ -849,16 +803,15 @@ document.querySelectorAll(".ribbon-img").forEach(el=>el.addEventListener("click"
 ═══════════════════════════════════ */
 const ribbon=document.getElementById("ribbon");
 const ribbonImgs=ribbon.querySelectorAll(".ribbon-img");
-const ITEM_W=266; // 260px + 6px gap
-const HALF=ribbonImgs.length/2; // 6 originals
+const ITEM_W=266;
+const HALF=ribbonImgs.length/2;
 let ribbonX=0;
 let ribbonPaused=false;
-const RIBBON_SPEED=0.6; // px per frame
+const RIBBON_SPEED=0.6;
 
 (function autoScroll(){
   if(!ribbonPaused){
     ribbonX+=RIBBON_SPEED;
-    // When we've scrolled past the first set, jump back seamlessly
     const resetAt=HALF*ITEM_W;
     if(ribbonX>=resetAt) ribbonX=0;
     ribbon.scrollLeft=ribbonX;
@@ -866,15 +819,11 @@ const RIBBON_SPEED=0.6; // px per frame
   requestAnimationFrame(autoScroll);
 })();
 
-// Pause on hover, resume on leave
 ribbon.addEventListener("mouseenter",()=>ribbonPaused=true);
 ribbon.addEventListener("mouseleave",()=>ribbonPaused=false);
 ribbon.addEventListener("touchstart",()=>ribbonPaused=true,{passive:true});
 ribbon.addEventListener("touchend",()=>{setTimeout(()=>ribbonPaused=false,2000);},{passive:true});
 
-/* ═══════════════════════════════════
-   SAVE THE DATE — Add to Calendar
-═══════════════════════════════════ */
 /* ═══════════════════════════════════
    CONFETTI on Save the Date click
 ═══════════════════════════════════ */
